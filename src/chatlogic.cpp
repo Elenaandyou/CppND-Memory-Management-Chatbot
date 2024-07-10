@@ -227,15 +227,24 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
         }
     }
 
-    _chatBot = new ChatBot("../images/chatbot.png");
+    // _chatBot = new ChatBot("../images/chatbot.png");
 
-    _chatBot->SetChatLogicHandle(this);
+    // _chatBot->SetChatLogicHandle(this);
+
+    // // add chatbot to graph root node
+    // // _chatBot->SetRootNode(rootNode);
+    // // rootNode->MoveChatbotHere(_chatBot);
+    // _chatBot->SetRootNode(rootNode);
+    // rootNode->MoveChatbotHere(std::move(*_chatBot));
+
+    ChatBot chatBot("../images/chatbot.png");
+
+    SetChatbotHandle(&chatBot);
+    chatBot.SetChatLogicHandle(this);
 
     // add chatbot to graph root node
-    // _chatBot->SetRootNode(rootNode);
-    // rootNode->MoveChatbotHere(_chatBot);
-    _chatBot->SetRootNode(rootNode);
-    rootNode->MoveChatbotHere(std::move(*_chatBot));
+    chatBot.SetRootNode(rootNode);
+    rootNode->MoveChatbotHere(std::move(chatBot));
     
     ////
     //// EOF STUDENT CODE
